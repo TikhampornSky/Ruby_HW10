@@ -1,0 +1,32 @@
+<h1> Shop Page </h1>
+
+<p> User ID: <%= @user_id %> </p>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <% if (session[:logged_in] == true) %>
+            <th>Buy</th>
+        <% end %>
+    </tr>
+  
+    <div id="items">
+        <% @myItem.each do |item| %>
+            <tr>
+                <td>  <%= item.name %></td>
+                <td>  <%= item.price %></td>
+                <% if (session[:logged_in] == true) %>
+                    <td> <%= link_to "BUY", "/inventories/buy/#{item.id}" %> </td>
+                <% end %>
+            </tr>
+        <% end %>
+    </div>
+
+</table>
+
+<style>
+    table, th, td {
+        border: 1px solid;
+    }
+</style>

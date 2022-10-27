@@ -1,0 +1,36 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>My Items</h1>
+<p>User ID: <%= session[:user_id] %> </p>
+<p>User Name: <%= @Iam.name %> </p>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Stock</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+
+    <div id="items">
+    <% @items.each do |item| %>
+        <tr>
+            <td>  <%= item.name %></td>
+            <td>  <%= item.price %></td>
+            <td> <%= item.stock %></td>
+            <td> <%= link_to "EDIT", "/items/#{item.id}/edit" %> </td>
+            <td> <%= button_to "DELETE", "/items/#{item.id}", method: :delete %> </td>
+        </tr>
+    <% end %>
+    </div>
+
+</table>
+
+<%= link_to "New item", new_item_path %>
+
+<style>
+    table, th, td {
+        border: 1px solid;
+    }
+</style>
