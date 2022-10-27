@@ -20,7 +20,7 @@
             <td>  <%= item.price %></td>
             <td> <%= item.stock %></td>
             <td> <%= link_to "EDIT", "/items/#{item.id}/edit" %> </td>
-            <td> <%= button_to "DELETE", "/items/#{item.id}", method: :delete %> </td>
+            <td> <%= link_to "DELETE", "/main/destroy_item/#{item.id}" %> </td>
         </tr>
     <% end %>
     </div>

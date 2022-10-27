@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   get 'main/create'
   get 'main/user_items'
   get 'shop/:id', to: 'shop#shop'
-  get '/inventories/buy/:id', to: 'inventories#buy'
+  get '/inventories/buy/:id/:prev', to: 'inventories#buy'
+  get 'main/inventories'
+  get 'main/destroy_item/:id', to: 'main#destroy_item'
 end

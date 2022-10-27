@@ -7,7 +7,29 @@ class InventoriesController < ApplicationController
     @user_id = session[:user_id]
     @price = Item.where(id: @item_id).first.price
     @timestamp = Time.now()
+
+    @myItem = Item.where(id: @item_id).first
+    @myItem.stock = @myItem.stock - 1
+
+    if (@myItem.stock < 0) 
+      redirect_to "/shop/#{params[:prev]}", notice: "Number of this product is zero ;-;"
+    else 
+      @inventory = Inventory.new
+      @inventory.user_id = @user_id
+      @inventory.item_id = @item_id
+      @inventory.price = @price
+      @inventory.timestamp = @timestamp
+      @inventory.save
+
+      @myItem.save
+      redirect_to "/shop/#{params[:prev]}", notice: "Add to shpping cart succesfully"
+    end
   end
+
+
+
+
+
 
   # GET /inventories or /inventories.json
   def index

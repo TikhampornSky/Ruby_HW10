@@ -17,7 +17,7 @@
                 <td>  <%= item.name %></td>
                 <td>  <%= item.price %></td>
                 <% if (session[:logged_in] == true) %>
-                    <td> <%= link_to "BUY", "/inventories/buy/#{item.id}" %> </td>
+                    <td> <%= link_to "BUY", "/inventories/buy/#{item.id}/#{session[:user_id]}" %> </td>
                 <% end %>
             </tr>
         <% end %>
