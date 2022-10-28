@@ -32,6 +32,17 @@
   </div>
 
   <div>
+    <%= form.label :picture, style: "display: block" %>
+    <%= form.file_field :picture %>
+  </div>
+  <br>
+  <% if (@editing)  %>
+    <%= image_tag item.picture.variant(resize_to_limit: [300, 300]) %>
+    <%# <%= image_tag rails_blob_path(item.picture, disposition: "attachment") %>
+  <% end %>
+  <br>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
