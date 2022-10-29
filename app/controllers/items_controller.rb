@@ -25,7 +25,6 @@ class ItemsController < ApplicationController
   def create
     @editing = false
     @item = Item.new(item_params)
-
     respond_to do |format|
       if @item.save
         format.html { redirect_to item_url(@item), notice: "Item was successfully created." }
@@ -41,7 +40,9 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        @item.picture.attach(item_params[:picture])      #Update Image
+        if (item_params[:picture] != nil)
+          @item.picture.attach(item_params[:picture])      #Update Image
+        end
         format.html { redirect_to item_url(@item), notice: "Item was successfully updated." }
         format.json { render :show, status: :ok, location: @item }
       else
