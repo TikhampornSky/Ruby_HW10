@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   get 'main/login'
   get 'main/create'
-  get 'main/user_items'
+  get 'main/user_Item'
   get 'shop/:id', to: 'shop#shop'
   get '/inventories/buy/:id/:prev', to: 'inventories#buy'
   get 'main/inventories'

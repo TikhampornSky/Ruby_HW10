@@ -5,7 +5,7 @@ class MainController < ApplicationController
     def create
         u = User.where(login: params[:login]).first
         if u && u.authenticate(params[:password])
-            redirect_to '/main/user_items'
+            redirect_to '/main/user_Item'
             session[:logged_in] = true
             session[:user_id] = u.id
         else 
@@ -18,7 +18,7 @@ class MainController < ApplicationController
         reset_session
     end
 
-    def user_items
+    def user_Item
         if (session[:logged_in] == false) 
             redirect_to '/main/login', notice: 'Please Login!!!'
         end
@@ -40,6 +40,6 @@ class MainController < ApplicationController
         @item.destroy
         Inventory.destroy_by(item_id: params[:id])
 
-        redirect_to '/main/user_items', notice: 'Delete succesfully!!!'
+        redirect_to '/main/user_Item', notice: 'Delete succesfully!!!'
     end
 end
