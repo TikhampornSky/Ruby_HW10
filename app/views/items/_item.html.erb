@@ -19,4 +19,8 @@
     <%= item.stock %>
   </p>
 
+  <% if(item.picture.attached?) %>
+    <%= image_tag item.picture.variant(:thumb) %>
+  <%end%>
+
 </div>

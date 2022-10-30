@@ -37,10 +37,9 @@
   </div>
   <br>
   <% if (@editing)  %>
-    <% if (item.picture.attached?) %>
-      <%= image_tag item.picture.variant(resize_to_limit: [300, 300]) %>
-    <% end %>
-    <%# <%= image_tag rails_blob_path(item.picture, disposition: "attachment") %>
+    <% if(item.picture.attached?) %>
+      <%= image_tag item.picture.variant(:thumb) %>
+    <%end%>
   <% end %>
   <br>
   <br>
